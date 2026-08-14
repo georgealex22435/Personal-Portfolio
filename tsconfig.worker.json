@@ -1,0 +1,27 @@
+{
+  // Separate program for the Worker.
+  //
+  // @cloudflare/workers-types and lib.dom both declare Request, Response, fetch and
+  // friends with incompatible shapes. Typechecking the Worker in its own program with
+  // no DOM lib is what keeps both sides honest — the Worker gets the real runtime types
+  // (which is how §2's "Workers is not Node" constraint actually gets enforced) and the
+  // client keeps the browser ones.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "types": ["@cloudflare/workers-types"],
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "resolveJsonModule": true,
+    "noEmit": true,
+
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true
+  },
+  "include": ["src/worker", "src/i18n", "src/generated"]
+}

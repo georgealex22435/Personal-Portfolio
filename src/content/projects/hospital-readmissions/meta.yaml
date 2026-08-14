@@ -1,0 +1,18 @@
+id: hospital-readmissions
+timeframe: 2026
+stats:
+  - key: encounters
+    value: 101766
+  - key: hospitals
+    value: 130
+  - key: years
+    value: 10
+tools: [Python, pandas, scikit-learn, Tableau]
+domain: healthcare
+cover: /covers/readmissions.jpg
+# repo and notebook are [FILL] in the handover — the capstone repo is not public on the
+# account (verified 2026-08-07). Keys omitted rather than filled with a placeholder URL,
+# so the links row renders without them instead of shipping a dead link.
+links: {}
+featured: true
+order: 1

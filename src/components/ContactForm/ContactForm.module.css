@@ -1,0 +1,114 @@
+/* Contact form — handover §2. Only rendered when the Worker reports it can send. */
+
+.form {
+  display: grid;
+  gap: var(--space-s);
+  max-inline-size: 34rem;
+  margin-block-start: var(--space-l);
+}
+
+.field {
+  display: grid;
+  gap: var(--space-3xs);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.input,
+.textarea {
+  inline-size: 100%;
+  min-block-size: var(--tap-target);
+  padding: var(--space-2xs);
+  background: var(--surface);
+  border: var(--rule-width) solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  color: var(--ink);
+  transition: border-color var(--hover-transition) linear;
+}
+
+.input:hover,
+.textarea:hover {
+  border-color: var(--muted);
+}
+
+.input:focus-visible,
+.textarea:focus-visible {
+  border-color: var(--signal);
+}
+
+.textarea {
+  min-block-size: 8rem;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.invalid {
+  border-color: var(--flag);
+}
+
+.error {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  color: var(--flag);
+}
+
+/* The honeypot. Hidden from sight and from assistive tech, and taken out of the tab
+   order, so no real user can reach it — but still a normal field to a bot. */
+.honeypot {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.submit {
+  justify-self: start;
+  min-block-size: var(--tap-target);
+  padding-inline: var(--space-m);
+  background: var(--ink);
+  color: var(--surface);
+  border: 0;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background-color var(--hover-transition) linear;
+}
+
+.submit:hover:not(:disabled) {
+  background: var(--signal);
+}
+
+.submit:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+}
+
+.status {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+
+.statusOk {
+  composes: status;
+  color: var(--signal);
+}
+
+.statusError {
+  composes: status;
+  color: var(--flag);
+}

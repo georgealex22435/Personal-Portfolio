@@ -1,0 +1,20 @@
+id: employee-satisfaction
+timeframe: 2026
+stats:
+  - key: responses
+    value: 3025
+  - key: test_families
+    value: 3
+  - key: predictors
+    value: 5
+tools: [R, tidyverse, ggplot2, R Markdown]
+domain: analytics
+cover: /covers/satisfaction-regression.jpg
+# Agent note in the handover: the rendered report is more valuable to a recruiter than
+# the repo, so `report` is the primary link and `repo` is secondary (see ProjectDetail).
+# The [FILL] GitHub Pages URL was resolved and verified live (status: built) 2026-08-07.
+links:
+  report: https://alexsaliba2.github.io/Employee-Satisfaction-Analysis-Using-R/
+  repo: https://github.com/alexsaliba2/Employee-Satisfaction-Analysis-Using-R
+featured: true
+order: 3

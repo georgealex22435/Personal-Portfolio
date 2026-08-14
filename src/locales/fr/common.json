@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "siteName": "Alexandre Saliba",
+    "homeTitle": "Alexandre Saliba — Analyste de données",
+    "homeDescription": "Analyste de données travaillant en analytique, science des données et ingénierie des données. Quatre projets en santé, cinéma, analytique RH et ingénierie des données.",
+    "projectsTitle": "Projets — Alexandre Saliba",
+    "projectsDescription": "Quatre projets de données en analytique, science des données et ingénierie des données.",
+    "aboutTitle": "À propos — Alexandre Saliba",
+    "aboutDescription": "De l'informatique à l'analytique : comment j'ai trouvé la partie du domaine que je voulais exercer.",
+    "resumeTitle": "CV — Alexandre Saliba",
+    "resumeDescription": "CV d'Alexandre Saliba, analyste de données."
+  },
+  "nav": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "about": "À propos",
+    "resume": "CV",
+    "skipToContent": "Aller au contenu",
+    "languageLabel": "Langue",
+    "mainLabel": "Principal"
+  },
+  "home": {
+    "positioning": "Analyste de données travaillant en analytique, science des données et ingénierie des données.",
+    "seeWork": "Voir les projets",
+    "downloadResume": "Télécharger le CV",
+    "gridLeadIn": "Trois branches, quatre projets.",
+    "featuredHeading": "Projets en vedette",
+    "aboutHeading": "À propos",
+    "aboutMore": "En savoir plus",
+    "contactHeading": "Contact"
+  },
+  "projects": {
+    "heading": "Projets",
+    "filterLabel": "Filtrer par domaine",
+    "all": "Tous",
+    "showing_one": "{{count}} projet affiché",
+    "showing_other": "{{count}} projets affichés",
+    "empty": "Aucun projet ne correspond à ce filtre.",
+    "next": "Projet suivant",
+    "viewProject": "Voir le projet"
+  },
+  "project": {
+    "role": "Rôle",
+    "timeframe": "Période",
+    "tools": "Outils",
+    "repo": "Dépôt",
+    "notebook": "Notebook",
+    "dashboard": "Tableau de bord",
+    "report": "Rapport",
+    "sections": {
+      "problem": "Problème",
+      "data": "Données",
+      "approach": "Méthode",
+      "findings": "Résultats",
+      "soWhat": "Portée"
+    }
+  },
+  "stats": {
+    "encounters": "consultations",
+    "hospitals": "hôpitaux",
+    "years": "ans",
+    "films": "films",
+    "years_covered": "années couvertes",
+    "pipeline_seconds": "secondes de pipeline",
+    "responses": "réponses",
+    "test_families": "familles de tests",
+    "predictors": "prédicteurs",
+    "tables": "tables",
+    "business_queries": "requêtes métier"
+  },
+  "domains": {
+    "healthcare": "Santé",
+    "gaming": "Jeu vidéo",
+    "data-engineering": "Ingénierie des données",
+    "analytics": "Analytique"
+  },
+  "about": {
+    "heading": "À propos"
+  },
+  "resume": {
+    "heading": "CV",
+    "download": "Télécharger le PDF",
+    "downloadUnavailable": "PDF à venir"
+  },
+  "contact": {
+    "heading": "Me contacter",
+    "email": "Courriel",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "tableau": "Tableau Public"
+  },
+  "offline": {
+    "heading": "Vous êtes hors ligne",
+    "body": "Cette page n'a pas encore été mise en cache. Les pages déjà visitées restent accessibles.",
+    "availableHeading": "Disponible hors ligne",
+    "contactPrompt": "Vous pouvez toujours me joindre par courriel :"
+  },
+  "update": {
+    "available": "Une nouvelle version de ce site est disponible.",
+    "reload": "Recharger"
+  },
+  "footer": {
+    "version": "Version {{version}}",
+    "builtWith": "Réalisé avec React, Vite et Cloudflare Workers."
+  },
+  "contactForm": {
+    "name": "Nom",
+    "email": "Courriel",
+    "message": "Message",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours…",
+    "sent": "Merci — votre message est en route.",
+    "error": "L'envoi a échoué. Écrivez-moi directement par courriel.",
+    "rateLimited": "Trop de messages pour le moment. Réessayez dans une heure ou écrivez-moi directement."
+  }
+}

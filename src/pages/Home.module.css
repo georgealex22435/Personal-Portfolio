@@ -1,0 +1,163 @@
+/* Home — handover §8. Under three scroll-screens on desktop. */
+
+.hero {
+  padding-block: var(--space-2xl) var(--space-xl);
+}
+
+/* §8: name in display type. No photo. */
+.name {
+  font-size: var(--step-5);
+}
+
+@media (min-width: 768px) {
+  .name {
+    font-size: calc(var(--step-5) * 1.4);
+  }
+}
+
+.positioning {
+  margin-block-start: var(--space-s);
+  max-inline-size: 30ch;
+  font-size: var(--step-1);
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.heroLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin-block-start: var(--space-l);
+}
+
+.primaryLink {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap-target);
+  padding-inline: var(--space-m);
+  background: var(--ink);
+  color: var(--surface);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background-color var(--hover-transition) linear;
+}
+
+.primaryLink:hover {
+  background: var(--signal);
+  color: var(--surface);
+}
+
+.secondaryLink {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--tap-target);
+  padding-inline: var(--space-m);
+  border: var(--rule-width) solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color var(--hover-transition) linear;
+}
+
+.secondaryLink:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.section {
+  padding-block-start: var(--space-2xl);
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-block-end: var(--space-s);
+  border-block-end: var(--rule-width) solid var(--rule);
+}
+
+/* §8 item 3: section lead-in above the project grid. Appendix A marks this line as
+   load-bearing — it ties the grid to the About section's claim. */
+.leadIn {
+  margin-block-start: var(--space-m);
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: 700;
+  font-size: var(--step-3);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+/* Container-based, not viewport-based — see ProjectsIndex.module.css for why. */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-m);
+  margin-block-start: var(--space-l);
+  padding: 0;
+  list-style: none;
+}
+
+@container content (min-width: 34rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container content (min-width: 52rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.aboutBody {
+  margin-block-start: var(--space-m);
+  max-inline-size: var(--measure);
+  font-size: var(--step-1);
+  line-height: 1.6;
+}
+
+.aboutMore {
+  display: inline-block;
+  margin-block-start: var(--space-s);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+
+.contactList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  margin-block-start: var(--space-m);
+  padding: 0;
+  list-style: none;
+}
+
+.contactItem {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+}
+
+/* §8: email in plain selectable text. */
+.email {
+  margin-block-start: var(--space-m);
+  font-family: var(--font-mono);
+  font-size: var(--step-1);
+  user-select: all;
+}
+
+.pending {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  color: var(--muted);
+}

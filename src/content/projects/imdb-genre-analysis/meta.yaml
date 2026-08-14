@@ -1,0 +1,16 @@
+id: imdb-genre-analysis
+timeframe: 2026
+stats:
+  - key: films
+    value: 330970
+  - key: years_covered
+    value: 106
+  - key: pipeline_seconds
+    value: 31
+tools: [PySpark, Databricks, Spark Structured Streaming, Python]
+domain: data-engineering
+cover: /covers/genre_risk_reward_matrix.png
+links:
+  repo: https://github.com/alexsaliba2/bigdata_imdb_businesscase
+featured: true
+order: 2

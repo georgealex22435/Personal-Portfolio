@@ -1,0 +1,116 @@
+{
+  "meta": {
+    "siteName": "Alexandre Saliba",
+    "homeTitle": "Alexandre Saliba — Data Analyst",
+    "homeDescription": "Data analyst working across analytics, data science, and data engineering. Four projects in healthcare, film, workplace analytics, and data engineering.",
+    "projectsTitle": "Projects — Alexandre Saliba",
+    "projectsDescription": "Four data projects across analytics, data science, and data engineering.",
+    "aboutTitle": "About — Alexandre Saliba",
+    "aboutDescription": "Computer science to analytics: how I found the part of the field I wanted to do.",
+    "resumeTitle": "Resume — Alexandre Saliba",
+    "resumeDescription": "Resume of Alexandre Saliba, data analyst."
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "resume": "Resume",
+    "skipToContent": "Skip to content",
+    "languageLabel": "Language",
+    "mainLabel": "Main"
+  },
+  "home": {
+    "positioning": "Data analyst working across analytics, data science, and data engineering.",
+    "seeWork": "See the work",
+    "downloadResume": "Download resume",
+    "gridLeadIn": "Three branches, four projects.",
+    "featuredHeading": "Featured projects",
+    "aboutHeading": "About",
+    "aboutMore": "More about me",
+    "contactHeading": "Contact"
+  },
+  "projects": {
+    "heading": "Projects",
+    "filterLabel": "Filter by domain",
+    "all": "All",
+    "showing_one": "Showing {{count}} project",
+    "showing_other": "Showing {{count}} projects",
+    "empty": "No projects match this filter.",
+    "next": "Next project",
+    "viewProject": "View project"
+  },
+  "project": {
+    "role": "Role",
+    "timeframe": "Timeframe",
+    "tools": "Tools",
+    "repo": "Repository",
+    "notebook": "Notebook",
+    "dashboard": "Dashboard",
+    "report": "Report",
+    "sections": {
+      "problem": "Problem",
+      "data": "Data",
+      "approach": "Approach",
+      "findings": "Findings",
+      "soWhat": "So what"
+    }
+  },
+  "stats": {
+    "encounters": "encounters",
+    "hospitals": "hospitals",
+    "years": "years",
+    "films": "films",
+    "years_covered": "years covered",
+    "pipeline_seconds": "second pipeline",
+    "responses": "responses",
+    "test_families": "test families",
+    "predictors": "predictors",
+    "tables": "tables",
+    "business_queries": "business queries"
+  },
+  "domains": {
+    "healthcare": "Healthcare",
+    "gaming": "Gaming",
+    "data-engineering": "Data engineering",
+    "analytics": "Analytics"
+  },
+  "about": {
+    "heading": "About"
+  },
+  "resume": {
+    "heading": "Resume",
+    "download": "Download PDF",
+    "downloadUnavailable": "PDF coming soon"
+  },
+  "contact": {
+    "heading": "Get in touch",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "tableau": "Tableau Public"
+  },
+  "offline": {
+    "heading": "You're offline",
+    "body": "This page hasn't been cached yet. Pages you've already visited are still available.",
+    "availableHeading": "Available offline",
+    "contactPrompt": "You can still reach me by email:"
+  },
+  "update": {
+    "available": "A new version of this site is available.",
+    "reload": "Reload"
+  },
+  "footer": {
+    "version": "Version {{version}}",
+    "builtWith": "Built with React, Vite, and Cloudflare Workers."
+  },
+  "contactForm": {
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "sent": "Thanks — your message is on its way.",
+    "error": "That didn't send. Email me directly instead.",
+    "rateLimited": "Too many messages just now. Try again in an hour, or email me directly."
+  }
+}

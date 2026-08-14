@@ -1,0 +1,100 @@
+/**
+ * The stat line — handover §7's single signature element.
+ *
+ * Two to four figures in condensed display type, mono labels beneath, hairline rules
+ * between. Same component, same rhythm, on the index card and atop the detail page.
+ * §7: "This is the one memorable device. Everything else stays quiet. Do not add a
+ * second signature."
+ */
+
+.statLine {
+  display: grid;
+  /**
+   * Columns are sized by the space available, not by a fixed count at a viewport
+   * breakpoint.
+   *
+   * §4 asks for 2×2 on a narrow phone and a single row otherwise, but the same
+   * component also sits inside project cards, which are far narrower than the page at
+   * the same viewport width. A fixed `repeat(3, …)` there squeezes each track to ~80px
+   * and the mono labels break mid-word — "ENCOUNT / ERS" — which is worse than wrapping
+   * to a second row. A 7rem floor keeps every label on whole words and yields 2 columns
+   * in a card, 2×2 on a small phone, and one row wherever there is room.
+   */
+  grid-template-columns: repeat(auto-fit, minmax(min(7rem, 100%), 1fr));
+  /**
+   * Hairlines are drawn by the grid's own background showing through 1px gaps, rather
+   * than by a border on each cell.
+   *
+   * A per-cell `border-inline-start` suppressed on `:first-child` only works when every
+   * figure is on one row. As soon as they wrap — which they now do inside cards — the
+   * first cell of the second row keeps its leading rule and sits indented. Gaps have no
+   * such edge case, and give correct rules horizontally *and* vertically at any column
+   * count.
+   */
+  /**
+   * Dividers are box-shadows on each cell, clipped at the grid's edge.
+   *
+   * Two earlier approaches both failed on wrapping. A per-cell border suppressed on
+   * `:first-child` leaves a stray rule on the first cell of a second row. Painting the
+   * grid's background through 1px gaps fixes that, but a row that isn't full paints its
+   * empty track in the rule colour — a gray block beside the last figure. Shadows are
+   * drawn per cell, so empty tracks stay empty, and `clip-path` trims the leading edges
+   * that would otherwise double the outer border.
+   */
+  clip-path: inset(0);
+  border-block: var(--rule-width) solid var(--rule);
+  margin: 0;
+}
+
+.stat {
+  /* Leading rules on both axes; the grid's clip-path removes the ones on the outer
+     edges, leaving hairlines only *between* figures — including across a wrapped row. */
+  box-shadow:
+    calc(-1 * var(--rule-width)) 0 0 0 var(--rule),
+    0 calc(-1 * var(--rule-width)) 0 0 var(--rule);
+  display: flex;
+  /* DOM order is <dt> label then <dd> value, which is the correct definition-list
+     semantics. Reversing here puts the figure on top visually without lying to
+     screen readers or breaking the term/description pairing. */
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: var(--space-3xs);
+  padding: var(--space-xs) var(--space-s) var(--space-s);
+}
+
+.value {
+  margin: 0;
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: 700;
+  font-size: var(--step-4);
+  line-height: 1;
+  color: var(--ink);
+  /* Tabular figures so counting up doesn't make the layout jitter. */
+  font-variant-numeric: tabular-nums;
+  /* §4: never wrap mid-figure. */
+  white-space: nowrap;
+}
+
+.label {
+  margin: 0; /* dd carries a default inline-start margin in most UA stylesheets */
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.3;
+  /* French and Spanish labels run longer (§5), so they wrap rather than truncate —
+     §4 forbids ellipsis on anything a recruiter needs to read. Wrapping happens at
+     spaces only: breaking inside a word is as unreadable as truncating it. */
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+/* Larger figures once there's room for them. */
+@media (min-width: 768px) {
+  .value {
+    font-size: var(--step-5);
+  }
+}

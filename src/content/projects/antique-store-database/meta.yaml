@@ -1,0 +1,15 @@
+id: antique-store-database
+timeframe: 2026
+# Only two figures — the handover confirms the stat-line component supports two.
+stats:
+  - key: tables
+    value: 6
+  - key: business_queries
+    value: 8
+tools: [MySQL, MySQL Workbench, SQL]
+domain: data-engineering
+cover: /covers/antique-eer.png
+links:
+  repo: https://github.com/alexsaliba2/Antique-Store-Database
+featured: false
+order: 4

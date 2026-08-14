@@ -1,0 +1,104 @@
+/**
+ * Design tokens — handover §7.
+ *
+ * The visual language borrows from post-match reports and broadcast scoreboards:
+ * stat lines, deltas, precise numerals, with editorial restraint. Cool and
+ * instrument-like, not neon, not "gamer".
+ *
+ * This is a light-only palette by design. §7 forbids dark-mode-with-neon-accent, and
+ * the surface/ink relationship is specific — do not add a prefers-color-scheme block.
+ */
+
+:root {
+  /* ---- Color ----
+     Owner revision 2026-08-14: white page ground with a blue side rail, replacing §7's
+     cool-gray base. --signal keeps its §7 value but is now structural (the rail) as
+     well as the accent. Panels and rules carry a faint blue bias so cards read as
+     belonging with the rail rather than as neutral gray boxes on white. */
+  --surface: #ffffff; /* white page base */
+  --panel: #f5f7fb; /* raised cards — slightly blue, not neutral gray */
+  --ink: #101317; /* primary text */
+  --muted: #6b7280; /* labels, captions, metadata */
+  --rule: #dce0e8; /* hairlines, dividers — blue-biased */
+  --signal: #1f3fd6; /* electric blue — the rail, links, positive deltas */
+  --flag: #d8322a; /* red — negative deltas ONLY, twice per page at most */
+
+  /* The rail, and everything that sits on top of it. */
+  --rail: #1f3fd6;
+  --rail-deep: #16309f; /* rail hairlines and pressed states */
+  --on-rail: #ffffff;
+  --on-rail-muted: #b6c2f3;
+
+  /* Derived, used sparingly for focus rings and hover washes. */
+  --signal-wash: color-mix(in srgb, var(--signal) 8%, transparent);
+  --ink-wash: color-mix(in srgb, var(--ink) 5%, transparent);
+
+  /* Rail width on desktop; page content is inset by this much. */
+  --rail-width: 13rem;
+
+  /* ---- Radius (§7: 2px everywhere) ---- */
+  --radius: 2px;
+
+  /* ---- Type families ----
+     Archivo carries a width axis (62%–125%), so Condensed is font-stretch, not a
+     separate family. Newsreader is a serif body face: it keeps long findings readable
+     and stops the page reading like a dashboard. */
+  --font-display: 'Archivo Variable', 'Archivo Narrow', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Newsreader Variable', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  /* Condensed setting for display type — the scoreboard look, and it buys back
+     horizontal space for French and Spanish, which run 15–25% longer (§5). */
+  --display-stretch: 62%;
+
+  /* ---- Type scale, 1.25 ratio (§7) ---- */
+  --step--2: 0.75rem;
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.563rem;
+  --step-3: 1.953rem;
+  --step-4: 2.441rem;
+  --step-5: 3.052rem;
+
+  /* ---- Spacing ---- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* ---- Layout ---- */
+  --measure: 68ch; /* §4: prose measure capped at 68 characters at all widths */
+  --content-max: 72rem;
+  --tap-target: 44px; /* §4: touch targets ≥44×44px */
+  --rule-width: 1px;
+
+  /* ---- Breakpoints (§4) — reference values.
+     CSS cannot use custom properties in media queries; these document the contract
+     and are mirrored in the @custom-media-style comments beside each query. ---- */
+  --bp-sm: 375px; /* phone — design baseline */
+  --bp-md: 768px; /* tablet portrait */
+  --bp-lg: 1024px; /* tablet landscape / small laptop */
+  --bp-xl: 1440px; /* desktop */
+
+  /* ---- Motion (§7: one orchestrated moment, nothing else) ----
+     Stat-line numbers count up from zero over 500ms, staggered 60ms per column.
+     That is the entire animation budget. */
+  --count-duration: 500ms;
+  --count-stagger: 60ms;
+  --hover-transition: 80ms; /* hover states are near-instant color changes */
+}
+
+/* §7: respect prefers-reduced-motion — render final values immediately. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --count-duration: 0ms;
+    --count-stagger: 0ms;
+    --hover-transition: 0ms;
+  }
+}

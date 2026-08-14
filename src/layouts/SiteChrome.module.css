@@ -1,0 +1,252 @@
+/**
+ * Nav and footer chrome.
+ *
+ * Handover §4, revised by the owner 2026-08-14: white page ground with a blue side rail.
+ *
+ * Phone: bottom-anchored blue bar — 3 items plus the language switcher.
+ * Tablet and up: the same bar becomes a fixed vertical rail down the left edge, and the
+ * page content is inset by its width.
+ * No hamburger at any width (§4).
+ */
+
+/* ---------- Nav ---------- */
+
+.nav {
+  position: fixed;
+  inset-inline: 0;
+  inset-block-end: 0;
+  z-index: 20;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs);
+  background: var(--rail);
+  color: var(--on-rail);
+  /* Clear the iOS home indicator. */
+  padding-block-end: max(var(--space-2xs), env(safe-area-inset-bottom));
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--tap-target); /* §4: ≥44×44px touch targets */
+  min-inline-size: var(--tap-target);
+  padding-inline: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: var(--on-rail-muted);
+  border-radius: var(--radius);
+  transition: color var(--hover-transition) linear;
+}
+
+/* Same appearance as .navLink, but hidden on the phone bar — §4 allows three items
+   there, and a fourth forces the longest French label to wrap. */
+.navLinkDesktop {
+  composes: navLink;
+  display: none;
+}
+
+.navLink:hover,
+.navLinkDesktop:hover {
+  color: var(--on-rail);
+}
+
+.navLink[aria-current='page'],
+.navLinkDesktop[aria-current='page'] {
+  color: var(--on-rail);
+  box-shadow: inset 0 -2px 0 0 var(--on-rail);
+}
+
+/* Focus has to be visible against blue, not just against white. */
+.nav :focus-visible {
+  outline: 2px solid var(--on-rail);
+  outline-offset: 2px;
+}
+
+/* Wordmark — only shown once the rail is vertical and has room for it. */
+.railMark {
+  display: none;
+}
+
+/* Tablet and up: the bar rotates into a vertical rail on the left edge. */
+@media (min-width: 768px) {
+  .nav {
+    inset-block: 0;
+    inset-inline: 0 auto;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: var(--space-3xs);
+    inline-size: var(--rail-width);
+    padding: var(--space-l) var(--space-s);
+    border-inline-end: var(--rule-width) solid var(--rail-deep);
+    overflow-y: auto;
+  }
+
+  .navLink,
+  .navLinkDesktop {
+    display: flex;
+    justify-content: flex-start;
+    padding-inline: var(--space-2xs);
+  }
+
+  /* The active marker moves to the leading edge once the rail is vertical — an
+     underline reads as an underline, not as "you are here", in a stacked column. */
+  .navLink[aria-current='page'],
+  .navLinkDesktop[aria-current='page'] {
+    box-shadow: inset 2px 0 0 0 var(--on-rail);
+  }
+
+  .railMark {
+    display: block;
+    margin-block-end: var(--space-l);
+    padding-inline: var(--space-2xs);
+    font-family: var(--font-display);
+    font-stretch: var(--display-stretch);
+    font-weight: 700;
+    font-size: var(--step-2);
+    line-height: 1;
+    color: var(--on-rail);
+    text-decoration: none;
+  }
+}
+
+/* ---------- Language switcher ---------- */
+
+.langGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3xs);
+}
+
+/* §7 forbidden list: flag icons as language labels — use EN / FR / ES text. */
+.langLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: var(--tap-target);
+  /* §4 requires ≥44×44px. 2.5rem was 40px wide — tall enough but too narrow. */
+  min-inline-size: var(--tap-target);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--on-rail-muted);
+  border-radius: var(--radius);
+  transition: color var(--hover-transition) linear;
+}
+
+.langLink:hover {
+  color: var(--on-rail);
+}
+
+.langLink[aria-current='true'] {
+  color: var(--on-rail);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+@media (min-width: 768px) {
+  .langGroup {
+    /* Pinned to the foot of the rail, away from the primary destinations. */
+    margin-block-start: auto;
+    padding-block-start: var(--space-m);
+    border-block-start: var(--rule-width) solid var(--rail-deep);
+  }
+
+  .langLink {
+    min-block-size: auto;
+    min-inline-size: auto;
+    padding: var(--space-3xs) var(--space-2xs);
+  }
+}
+
+/* ---------- Page frame ---------- */
+
+.page {
+  /* Phone: leave room for the fixed bottom bar so content is never hidden behind it. */
+  padding-block-end: calc(var(--tap-target) + var(--space-2xl));
+}
+
+@media (min-width: 768px) {
+  .page {
+    /* Desktop: inset by the rail instead. */
+    padding-block-end: var(--space-2xl);
+    padding-inline-start: var(--rail-width);
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  margin-block-start: var(--space-3xl);
+  padding-block: var(--space-l);
+  border-block-start: var(--rule-width) solid var(--rule);
+}
+
+.footerRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.footerNote {
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  color: var(--muted);
+}
+
+/* ---------- Update prompt ---------- */
+
+/* Shown when a new build is live but this tab is still running the old one. The site
+   must pick up the latest version on load, and a precached service-worker shell can
+   otherwise shadow a fresh deploy indefinitely. */
+.updateBar {
+  position: fixed;
+  inset-inline: var(--space-s);
+  inset-block-end: calc(var(--tap-target) + var(--space-m));
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-s);
+  background: var(--ink);
+  color: var(--surface);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+}
+
+@media (min-width: 768px) {
+  .updateBar {
+    inset-inline: auto var(--space-l);
+    inset-block-end: var(--space-l);
+    max-inline-size: 28rem;
+  }
+}
+
+.updateButton {
+  min-block-size: var(--tap-target);
+  padding-inline: var(--space-s);
+  background: var(--surface);
+  color: var(--ink);
+  border: 0;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}

@@ -1,0 +1,242 @@
+/* Project detail — handover §8. The highest-value page on the site. */
+
+.header {
+  padding-block-start: var(--space-xl);
+}
+
+.eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-s);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.title {
+  margin-block-start: var(--space-s);
+  font-size: var(--step-2);
+  /* The title is secondary here — the headline sentence below is the hero (§8). */
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/**
+ * §8: "The `headline` sentence set large in display type — the hero of the page."
+ * §6: "it is the most important string on the site."
+ */
+.headline {
+  margin-block-start: var(--space-s);
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: 700;
+  font-size: var(--step-3);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: var(--ink);
+  /* Not capped at the prose measure: this is display type and wants to run wider,
+     but never so wide it becomes hard to track. */
+  max-inline-size: 24ch;
+}
+
+@media (min-width: 768px) {
+  .headline {
+    font-size: var(--step-4);
+    max-inline-size: 20ch;
+  }
+}
+
+@media (min-width: 1440px) {
+  .headline {
+    font-size: var(--step-5);
+  }
+}
+
+.statLineWrap {
+  margin-block-start: var(--space-xl);
+}
+
+/* ---------- Cover ---------- */
+
+.cover {
+  margin-block-start: var(--space-xl);
+}
+
+.coverImage {
+  inline-size: 100%;
+  block-size: auto;
+  background: var(--panel);
+  border: var(--rule-width) solid var(--rule);
+  border-radius: var(--radius);
+}
+
+/* Shown when a cover asset has not been supplied yet. Deliberately plain and labelled
+   rather than a decorative placeholder, so a missing asset is obvious in review. */
+.coverMissing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  padding: var(--space-l);
+  background: var(--panel);
+  border: var(--rule-width) dashed var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  text-align: center;
+  color: var(--muted);
+}
+
+.caption {
+  margin-block-start: var(--space-2xs);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---------- Links row ---------- */
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin-block-start: var(--space-l);
+  padding-block: var(--space-s);
+  border-block: var(--rule-width) solid var(--rule);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  min-block-size: var(--tap-target);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--signal);
+}
+
+.link:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* The primary link gets weight; secondary ones stay quiet. */
+.linkPrimary {
+  composes: link;
+  font-weight: 700;
+}
+
+.linkIcon {
+  inline-size: 0.85em;
+  block-size: 0.85em;
+  flex: none;
+}
+
+/* ---------- Tools ---------- */
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin-block-start: var(--space-l);
+  padding: 0;
+  list-style: none;
+}
+
+.tool {
+  padding: var(--space-3xs) var(--space-2xs);
+  background: var(--panel);
+  border: var(--rule-width) solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  color: var(--muted);
+}
+
+/* ---------- Body ---------- */
+
+.body {
+  margin-block-start: var(--space-2xl);
+  max-inline-size: var(--measure); /* §4: 68ch at all widths */
+}
+
+.body h2 {
+  margin-block-start: var(--space-xl);
+  margin-block-end: var(--space-s);
+  font-size: var(--step-1);
+  /* Section headings read as labels, not as competing display type — the headline
+     above is the only large voice on the page. */
+  font-family: var(--font-mono);
+  font-stretch: normal;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-block-start: var(--space-s);
+  border-block-start: var(--rule-width) solid var(--rule);
+}
+
+.body h2:first-child {
+  margin-block-start: 0;
+}
+
+.body p {
+  margin-block-end: var(--space-s);
+  line-height: 1.65;
+}
+
+.body code {
+  padding: 0.1em 0.3em;
+  background: var(--panel);
+  border: var(--rule-width) solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.body strong {
+  font-weight: 600;
+}
+
+/* ---------- Next project ---------- */
+
+.next {
+  display: block;
+  margin-block-start: var(--space-3xl);
+  padding-block: var(--space-l);
+  border-block-start: var(--rule-width) solid var(--rule);
+  text-decoration: none;
+}
+
+.nextLabel {
+  /* Both of these are spans inside a block-level <a>; without this they sit on one
+     line and overlap. */
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nextTitle {
+  display: block;
+  margin-block-start: var(--space-2xs);
+  font-family: var(--font-display);
+  font-stretch: var(--display-stretch);
+  font-weight: 700;
+  font-size: var(--step-2);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.next:hover .nextTitle {
+  color: var(--signal);
+}

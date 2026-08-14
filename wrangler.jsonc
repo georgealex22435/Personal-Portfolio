@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2026-08-05",
+  "main": "./src/worker/index.ts",
+  "assets": {
+    "directory": "./dist/client/",
+    "binding": "ASSETS",
+    // §2 says leave this at the default so assets serve from the edge without invoking
+    // the Worker — and every route does, except "/". A prerendered index.html exists at
+    // "/", so with a plain `false` the asset would win and §5's Accept-Language redirect
+    // would never run. Listing only "/" keeps the edge fast path for all real content
+    // while letting the Worker own the one route that must be server-side.
+    "run_worker_first": ["/"]
+  },
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "5cfc78e045e84e419194857563798ba2"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
