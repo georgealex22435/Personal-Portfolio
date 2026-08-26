@@ -3,7 +3,7 @@
 A trilingual (EN/FR/ES) data-analyst portfolio. Prerendered to static HTML, served from
 Cloudflare Workers, installable as a PWA.
 
-**Live:** not deployed yet — see [Deploying](#deploying).
+**Live:** https://portfolio.georgealex22435.workers.dev
 
 ---
 

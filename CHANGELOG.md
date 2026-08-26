@@ -3,6 +3,19 @@
 Semver; the patch number increments on every rebuild. The version shows in the site
 footer and drives the "new version available" prompt.
 
+## 0.1.12 — 2026-08-26
+
+First deploy to Cloudflare. No source changes — this is 0.1.11's output with a new version
+stamp, so the footer badge and `/version.json` identify what is actually live.
+
+- Live at `https://portfolio.georgealex22435.workers.dev`. The account's workers.dev
+  subdomain is `georgealex22435` and the Worker is named `portfolio`, so the URL matches
+  the `SITE_ORIGIN` already compiled into the canonical tags, hreflang alternates and
+  sitemap — no rewrite was needed.
+- The contact form stays hidden in production: `RESEND_API_KEY`, `CONTACT_TO` and
+  `CONTACT_FROM` are unset, so `/api/health` reports `contactEnabled: false` and the page
+  shows the email address instead. That is §2's specified fallback, not a failure.
+
 ## 0.1.11 — 2026-08-14
 
 Stat-line dividers reworked so they survive wrapping.
