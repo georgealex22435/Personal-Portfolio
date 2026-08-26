@@ -3,23 +3,6 @@
 Semver; the patch number increments on every rebuild. The version shows in the site
 footer and drives the "new version available" prompt.
 
-## 0.1.13 — 2026-08-26
-
-Version bump only — no source changes. Pushed deliberately to test whether the
-Cloudflare → GitHub connection rebuilds and redeploys the live site.
-
-**It does not.** The push landed on `main` at 15:56Z; five minutes later the live site was
-still serving 0.1.12, Cloudflare had run zero builds, and the API answered
-`No build configuration associated with that script tag was found for this account`
-(error 12040). Authorising Cloudflare's GitHub app is only half the flow — the `portfolio`
-Worker still needs a build configuration (repo, branch, build and deploy commands) saved
-against it. Deployed manually with `npm run deploy` to resync.
-
-Worth knowing before that connection is made: `npm run build` is safe in a CI container.
-`gen-covers.mjs` parses PNG and JPEG headers by hand rather than shelling out to an image
-library, and the three scripts that do drive a browser — `gen-icons.mjs`, `pdf-to-png.mjs`
-and `shoot.mjs` — are one-off asset generators that the build chain never calls.
-
 ## 0.1.12 — 2026-08-26
 
 First deploy to Cloudflare. No source changes — this is 0.1.11's output with a new version
