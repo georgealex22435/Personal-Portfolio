@@ -3,6 +3,12 @@
 Semver; the patch number increments on every rebuild. The version shows in the site
 footer and drives the "new version available" prompt.
 
+## 0.1.13 — 2026-08-26
+
+Version bump only — no source changes. Pushed deliberately to verify that the
+Cloudflare → GitHub connection actually rebuilds and redeploys the live site, which is
+checkable because the version shows in the footer and at `/version.json`.
+
 ## 0.1.12 — 2026-08-26
 
 First deploy to Cloudflare. No source changes — this is 0.1.11's output with a new version
