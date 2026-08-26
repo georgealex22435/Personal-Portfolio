@@ -3,6 +3,51 @@
 Semver; the patch number increments on every rebuild. The version shows in the site
 footer and drives the "new version available" prompt.
 
+## 0.1.15 — 2026-08-26
+
+Documentation caught up with the working deploy pipeline. No source changes.
+
+Because pushing now rebuilds and redeploys on its own, "bump the patch on every rebuild"
+has effectively become "bump on every push to `main`" — the footer badge and the update
+prompt are only truthful if the version moves whenever the deployed bundle does.
+
+## 0.1.14 — 2026-08-26
+
+Second auto-deploy test, after the owner completed the dashboard setup. **It works.**
+
+Pushed at 16:07:58Z having built nothing locally; Cloudflare's own build stamped
+`buildTime` 16:08:16Z and redeployed the Worker at 16:08:29Z — about half a minute door to
+door. The script annotation flipped from `upload` (a local `wrangler deploy`) to
+`version_upload`, which is Workers Builds.
+
+Cloudflare's build was verified rather than assumed, because it ran in a different
+container than the local one: 25 routes 200, the Accept-Language redirect intact, 20
+inline-script hashes in the CSP — recomputed by `gen-seo.mjs` against Cloudflare's own
+HTML — `no-store` on `version.json`, `immutable` on hashed assets, no console output on
+five pages across three languages, and the projects filter still mutating the grid, which
+is what proves hydration survived a CSP written by a build run elsewhere.
+
+One dead end worth recording: `builds/workers/portfolio/builds` reported `total_count: 0`
+throughout, and `builds/workers/portfolio` answered error 12040, *after* the deploy had
+demonstrably happened. Those endpoints return an empty success rather than a 403 when the
+API token lacks the Workers Builds scope, so they read exactly like "not connected" when
+the truth is "not permitted to look". Trust the deployed artefact — `buildTime`, the
+version badge, the `triggered_by` annotation — over that endpoint.
+
+## 0.1.13 — 2026-08-26
+
+First auto-deploy test. At the time it did **not** work: pushed at 15:56Z, and five minutes
+later the live site was still serving 0.1.12 with no build run. Cloudflare answered
+`No build configuration associated with that script tag was found for this account`
+(error 12040) — authorising the GitHub app is only half the flow, and the Worker still
+needed a build configuration saved against it. Deployed manually with `npm run deploy` to
+resync. Superseded by 0.1.14, where the same test passes.
+
+Worth keeping: `npm run build` is safe in a CI container. `gen-covers.mjs` parses PNG and
+JPEG headers by hand rather than shelling out to an image library, and the three scripts
+that do drive a browser — `gen-icons.mjs`, `pdf-to-png.mjs` and `shoot.mjs` — are one-off
+asset generators the build chain never calls.
+
 ## 0.1.12 — 2026-08-26
 
 First deploy to Cloudflare. No source changes — this is 0.1.11's output with a new version

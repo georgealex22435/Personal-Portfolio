@@ -123,3 +123,8 @@ capture and actually look.
 Semver, patch bump on **every** rebuild. `package.json` is the single source of truth;
 `scripts/gen-version.mjs` propagates it to `src/generated/version.ts` and
 `public/version.json`. The footer badge and the update prompt both read it.
+
+Since 2026-08-26 a push to `main` rebuilds and redeploys by itself, so "every rebuild" now
+means **every push**. Bump in the same commit as the change — a push that moves the
+deployed bundle without moving the version makes the footer badge and the update prompt
+both wrong.

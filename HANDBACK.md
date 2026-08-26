@@ -1,8 +1,12 @@
 # Handback notes
 
-Build **0.1.12**, live at https://portfolio.georgealex22435.workers.dev since 2026-08-26.
+Build **0.1.15**, live at https://portfolio.georgealex22435.workers.dev since 2026-08-26.
 What's unresolved, what was cut, and what I changed from the spec — required by handover
 §11.
+
+**Deploys are automatic.** Cloudflare rebuilds and redeploys on every push to `main`,
+verified end to end on 2026-08-26 and taking about half a minute. `npm run deploy` still
+works when you want to deploy without committing.
 
 ---
 
@@ -14,7 +18,6 @@ What's unresolved, what was cut, and what I changed from the spec — required b
 | **French and Spanish resume PDFs** | `/fr/cv/`, `/es/cv/` | Download button shows a pending state. English is live and serves your real file. Name them `alexandre-saliba-resume-{fr,es}.pdf` in `public/resume/` and fill `RESUME_PDF` in `src/content/site.ts`. |
 | **Resend account** | Contact form | Form stays hidden; your email shows as plain selectable text, which is §2's specified fallback. Add `RESEND_API_KEY`, `CONTACT_TO`, `CONTACT_FROM` via `wrangler secret put` and the form appears by itself. |
 | **Custom domain** | Canonical URLs, hreflang, sitemap, OG tags | Everything points at `portfolio.georgealex22435.workers.dev`. Change `SITE_ORIGIN` in `src/layouts/LocaleLayout.tsx` and `scripts/gen-seo.mjs`. |
-| **Cloudflare → GitHub auto-deploy** | — | Still not connected. The site is deployed and live, but pushing to GitHub does **not** update it — deploys are `npm run deploy`. Connecting needs a one-off OAuth authorisation in the Cloudflare dashboard that cannot be scripted. |
 | **A photo for the About page** | `/en/about/` | No photo renders. §8 asks for one and forbids stock imagery, so a placeholder person would be worse than none. |
 
 ## Needs your review, not your input

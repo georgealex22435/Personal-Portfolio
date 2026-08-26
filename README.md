@@ -127,20 +127,32 @@ Nothing is machine-translated at runtime — every string comes from a file a pe
 
 ## Deploying
 
-Deploys are driven by the version number in `package.json`. **Bump it before every
-deploy** — the site shows it in the footer, and visitors' browsers use it to notice a new
-build and offer a reload.
+**Pushing to `main` deploys.** Cloudflare rebuilds the site and redeploys the Worker on
+every push, in about half a minute. Nothing else is required.
+
+**Bump the version in the same commit.** The footer shows it and visitors' browsers use it
+to notice a new build and offer a reload — both of which lie if the version stays still
+while the deployed bundle moves.
 
 ```bash
-npm version patch    # 0.1.11 → 0.1.12
+npm version patch --no-git-tag-version   # 0.1.15 → 0.1.16
+git commit -am "…"
+git push                                 # Cloudflare takes it from here
+```
+
+To deploy without committing — a local experiment, or a hotfix while the repo is mid-review:
+
+```bash
 npm run deploy
 ```
 
 ### First-time setup
 
-1. **Connect the repo** — in the Cloudflare dashboard: Workers & Pages → your Worker →
-   Settings → Builds → Connect to Git. This needs a one-off GitHub authorisation that
-   can't be scripted.
+1. **Connect the repo** — done. Cloudflare's Workers Builds is attached to the `portfolio`
+   Worker and watching `main`. If it ever needs redoing: Workers & Pages → `portfolio` →
+   Settings → Build, with build command `npm run build` and deploy command
+   `npx wrangler deploy`. Attach it to the existing Worker rather than letting the flow
+   create a new project.
 2. **Add the contact-form secrets** (optional; without them the form stays hidden and the
    page shows your email address instead):
    ```bash
